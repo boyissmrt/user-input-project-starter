@@ -6,30 +6,27 @@ let adjectiveInput = document.getElementById("adjective");
 let result = document.getElementById("story_result");
 
 let submitButton = document.querySelector("button");
-
 let adlibs = document.querySelector("form");
-
-let title = titleInput.value;
 
 titleInput.addEventListener("input", updateValue);
 
 function updateValue(e) {
-    mainTitle.textContent = e.target.value;
+  mainTitle.textContent = e.target.value;
 }
 
 submitButton.onclick = function(event) {
-    event.preventDefault();
-    let nouns = nounInput.value;
-    let verbs = verbInput.value;
-    let adjectives = adjectiveInput.value;
+  event.preventDefault();
 
-    console.log(adlibs);
-    if (!nouns || !verbs || !adjectives) {
-        result.textContent = "Please fill in all fields";
-        return;
-    }
+  let title = titleInput.value.trim();
+  let nouns = nounInput.value.trim();
+  let verbs = verbInput.value.trim();
+  let adjectives = adjectiveInput.value.trim();
 
-    adlibs.style.display = "none";
+  if (!title || !nouns || !verbs || !adjectives) {
+    result.textContent = "Please fill in all fields";
+    return;
+  }
 
-    result.innerHTML = "Last night I ate a " + nouns + " and today I just had to exercise " + verbs + ". What a " + adjectives + " day!";
-}
+  adlibs.style.display = "none";
+  result.innerHTML = "Last night I ate a " + nouns + " and today I just had to exercise " + verbs + ". What a " + adjectives + " day!";
+};
